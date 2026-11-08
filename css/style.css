@@ -343,6 +343,44 @@ body {
   }
 }
 
+/* --- Responsive: about --- */
+@media (max-width: 800px) {
+  .about__inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "text"
+      "icons"
+      "photo";
+  }
+
+  .about__photo {
+    width: 100%;
+    max-width: 420px;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 64px 20px;
+  }
+
+  .tech-icons {
+    gap: 10px;
+  }
+
+  .tech-icons__item {
+    width: 64px;
+  }
+
+  .tech-icons__item img {
+    width: 48px;
+    height: 48px;
+    padding: 8px;
+  }
+}
+
 /* --- Responsive --- */
 @media (max-width: 640px) {
   .nav {
