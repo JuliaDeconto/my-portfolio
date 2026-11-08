@@ -176,6 +176,66 @@ body {
   fill: currentColor;
 }
 
+/* --- Animation --- */
+@media (prefers-reduced-motion: no-preference) {
+  .script {
+    animation: slide-in 0.9s ease-out both;
+  }
+
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: rotate(-4deg) translateX(-24px);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(-4deg);
+    }
+  }
+}
+
+/* --- Sections (shared) --- */
+.section {
+  padding: 96px clamp(20px, 5vw, 56px);
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+
+/* --- About --- */
+.about__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  grid-template-areas:
+    "title photo"
+    "text  photo"
+    "icons photo";
+  column-gap: clamp(24px, 5vw, 64px);
+  row-gap: 24px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about__title {
+  grid-area: title;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(48px, 9vw, 110px);
+  font-weight: 400;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.about__text {
+  grid-area: text;
+  display: grid;
+  gap: 16px;
+  max-width: 56ch;
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.55;
+  color: #fff;
+}
+
 /* --- Responsive --- */
 @media (max-width: 640px) {
   .nav {
@@ -195,23 +255,5 @@ body {
   .footer {
     flex-direction: column;
     align-items: flex-start;
-  }
-}
-
-/* --- Animation --- */
-@media (prefers-reduced-motion: no-preference) {
-  .script {
-    animation: slide-in 0.9s ease-out both;
-  }
-
-  @keyframes slide-in {
-    from {
-      opacity: 0;
-      transform: rotate(-4deg) translateX(-24px);
-    }
-    to {
-      opacity: 1;
-      transform: rotate(-4deg);
-    }
   }
 }
