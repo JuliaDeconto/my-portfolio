@@ -1,6 +1,6 @@
 # My Portfolio
 
-A personal portfolio website developed to showcase my projects, technical skills, and experience as a web developer.
+A personal portfolio website developed to showcase my projects, and technical skills.
 
 ## Technologies
 
