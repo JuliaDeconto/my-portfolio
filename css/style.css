@@ -176,7 +176,7 @@ body {
   fill: currentColor;
 }
 
-/* ---------- Responsive ---------- */
+/* --- Responsive --- */
 @media (max-width: 640px) {
   .nav {
     justify-content: flex-start;
@@ -195,5 +195,23 @@ body {
   .footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* --- Animation --- */
+@media (prefers-reduced-motion: no-preference) {
+  .script {
+    animation: slide-in 0.9s ease-out both;
+  }
+
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: rotate(-4deg) translateX(-24px);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(-4deg);
+    }
   }
 }
