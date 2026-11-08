@@ -236,7 +236,7 @@ body {
   color: #fff;
 }
 
-/* ---------- About photo ---------- */
+/* --- About photo --- */
 .about__photo {
   grid-area: photo;
   position: relative;
@@ -290,6 +290,44 @@ body {
   margin-left: 2px;
   vertical-align: text-bottom;
   background: currentColor;
+}
+
+/* --- Technology icons --- */
+.tech-icons {
+  grid-area: icons;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.tech-icons__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 72px;
+  font-size: 12px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.tech-icons__item img {
+  width: 56px;
+  height: 56px;
+  padding: 10px;
+  background: var(--ink);
+  border-radius: 12px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.tech-icons__item:hover img {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
 }
 
 /* --- Responsive --- */
