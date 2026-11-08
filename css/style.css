@@ -330,6 +330,19 @@ body {
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
 }
 
+/* --- Terminal cursor animation --- */
+@media (prefers-reduced-motion: no-preference) {
+  .terminal__cursor {
+    animation: blink 1s steps(1) infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
 /* --- Responsive --- */
 @media (max-width: 640px) {
   .nav {
