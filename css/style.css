@@ -1,1 +1,56 @@
 /* main stylesheet */
+
+/* --- Design tokens --- */
+:root {
+  --bg: #06141d;
+  --bg-accent: #0b2230;
+  --ink: #cfe6f3;
+  --ink-soft: #9fbdcc;
+  --line: #1c4257;
+}
+
+/* --- Reset and base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Barlow", sans-serif;
+}
+
+/* --- Hero section --- */
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  padding: 28px clamp(20px, 5vw, 56px);
+  overflow: hidden;
+  background:
+    radial-gradient(
+      60% 50% at 50% 45%,
+      rgba(40, 120, 160, 0.28),
+      transparent 70%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(120, 190, 220, 0.05) 0 1px,
+      transparent 1px 46px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(120, 190, 220, 0.04) 0 1px,
+      transparent 1px 46px
+    ),
+    linear-gradient(180deg, var(--bg-accent), var(--bg));
+}
