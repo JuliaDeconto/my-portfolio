@@ -129,3 +129,49 @@ body {
   right: 0;
   font-size: clamp(28px, 6.2vw, 80px);
 }
+
+/* --- Footer --- */
+.footer {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 16px;
+}
+
+.footer p {
+  max-width: 30ch;
+  font-size: clamp(15px, 1.9vw, 20px);
+  line-height: 1.35;
+  color: #fff;
+}
+
+.socials {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+}
+
+.socials a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  color: var(--ink);
+}
+
+.socials a:hover,
+.socials a:focus-visible {
+  background: rgba(207, 230, 243, 0.12);
+  outline: none;
+}
+
+.socials svg {
+  width: 34px;
+  height: 34px;
+  fill: currentColor;
+}
