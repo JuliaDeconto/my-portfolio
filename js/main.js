@@ -1,11 +1,11 @@
 // main script
 
-// --- Active nav link ---
+// ---------- Active nav link ----------
 // Highlights the nav link whose section is currently in view.
 const navLinks = document.querySelectorAll(".nav a");
-const sections = document.querySelectorAll("section[id]");
+const trackedSections = document.querySelectorAll("#home, section[id]");
 
-const observer = new IntersectionObserver(
+const navObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
@@ -17,8 +17,10 @@ const observer = new IntersectionObserver(
       );
     });
   },
-  { threshold: 0.5 },
+  { rootMargin: "-40% 0px -55% 0px" },
 );
+
+trackedSections.forEach((section) => navObserver.observe(section));
 
 sections.forEach((section) => observer.observe(section));
 
