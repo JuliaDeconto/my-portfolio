@@ -194,6 +194,13 @@ body {
   }
 }
 
+/* --- Active nav link --- */
+.nav a.is-active {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
 /* --- Sections (shared) --- */
 .section {
   padding: 96px clamp(20px, 5vw, 56px);
