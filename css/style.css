@@ -175,3 +175,25 @@ body {
   height: 34px;
   fill: currentColor;
 }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .nav {
+    justify-content: flex-start;
+    gap: 10px 18px;
+  }
+
+  .photo {
+    height: 100%;
+    max-width: 80%;
+  }
+
+  .role--top {
+    top: 6%;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
