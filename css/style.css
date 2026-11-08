@@ -82,3 +82,50 @@ body {
   text-decoration: underline;
   text-underline-offset: 6px;
 }
+
+/* --- Hero title --- */
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 420px;
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(40px, 8vw, 110px);
+  font-family: "Anton", sans-serif;
+  font-size: clamp(96px, 23vw, 290px);
+  line-height: 0.9;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.script {
+  position: absolute;
+  top: 2%;
+  left: 0;
+  z-index: 3;
+  font-family: "Mrs Saint Delafield", cursive;
+  font-size: clamp(90px, 19vw, 250px);
+  line-height: 0.8;
+  color: var(--ink);
+  transform: rotate(-4deg);
+}
+
+.role {
+  position: absolute;
+  z-index: 3;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.role--top {
+  top: 12%;
+  right: 0;
+  font-size: clamp(28px, 6.2vw, 80px);
+}
