@@ -487,6 +487,25 @@ body {
   }
 }
 
+/* --- Projects: spotlight --- */
+.project::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(120, 190, 220, 0.2),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.project:hover::before {
+  opacity: 1;
+}
+
 /* --- About --- */
 .about__inner {
   display: grid;

@@ -147,6 +147,36 @@ filterButtons.forEach((button) => {
   });
 });
 
+// --- Projects: tilt and spotlight ---
+// Only on devices with a real pointer and when motion is allowed.
+const canTilt = window.matchMedia(
+  "(hover: hover) and (prefers-reduced-motion: no-preference)",
+).matches;
+
+if (canTilt) {
+  grid.addEventListener("pointermove", (event) => {
+    const card = event.target.closest(".project");
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width;
+    const y = (event.clientY - rect.top) / rect.height;
+
+    card.style.setProperty("--mx", `${x * 100}%`);
+    card.style.setProperty("--my", `${y * 100}%`);
+    card.style.setProperty("--ry", `${(x - 0.5) * 10}deg`);
+    card.style.setProperty("--rx", `${(0.5 - y) * 10}deg`);
+  });
+
+  grid.addEventListener("pointerout", (event) => {
+    const card = event.target.closest(".project");
+    if (!card || card.contains(event.relatedTarget)) return;
+
+    card.style.setProperty("--rx", "0deg");
+    card.style.setProperty("--ry", "0deg");
+  });
+}
+
 // --- About photo fallback ---
 // Shows a placeholder when the portrait image is missing or fails to load.
 const aboutPhoto = document.getElementById("about-photo");
