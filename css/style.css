@@ -874,6 +874,81 @@ body:has(dialog[open]) {
   font-size: 16px;
 }
 
+/* --- Contact: social cards --- */
+.contact__links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 56px;
+  padding: 0;
+  list-style: none;
+}
+
+.contact__card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  color: var(--ink);
+  text-decoration: none;
+  background: linear-gradient(
+    160deg,
+    rgba(11, 34, 48, 0.95),
+    rgba(6, 20, 29, 0.95)
+  );
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.contact__card::after {
+  content: "↗️";
+  margin-left: auto;
+  font-size: 20px;
+  color: var(--ink-soft);
+}
+
+.contact__card:hover,
+.contact__card:focus-visible {
+  border-color: var(--ink-soft);
+  outline: none;
+  transform: translateY(-4px);
+}
+
+.contact__card svg {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  fill: currentColor;
+}
+
+.contact__card-label {
+  display: block;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.contact__card-handle {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+  overflow-wrap: anywhere;
+}
+
+.contact__footer {
+  margin-top: 72px;
+  padding-top: 24px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+}
+
 /* ---------- Responsive: projects ---------- */
 @media (max-width: 640px) {
   .projects__grid {
