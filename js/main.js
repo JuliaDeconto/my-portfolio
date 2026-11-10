@@ -1,6 +1,6 @@
 // main script
 
-// ---------- Active nav link ----------
+// --- Active nav link ---
 // Highlights the nav link whose section is currently in view.
 const navLinks = document.querySelectorAll(".nav a");
 const trackedSections = document.querySelectorAll("#home, section[id]");
@@ -21,8 +21,6 @@ const navObserver = new IntersectionObserver(
 );
 
 trackedSections.forEach((section) => navObserver.observe(section));
-
-sections.forEach((section) => observer.observe(section));
 
 // --- About photo fallback ---
 // Shows a placeholder when the portrait image is missing or fails to load.
