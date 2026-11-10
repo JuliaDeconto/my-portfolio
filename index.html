@@ -120,6 +120,31 @@
 
         <div class="projects__grid" id="projects-grid"></div>
       </div>
+
+      <dialog class="modal" id="project-modal" aria-labelledby="modal-title">
+        <div class="modal__panel">
+          <button
+            class="modal__close"
+            type="button"
+            aria-label="Close project details"
+            data-close
+          >
+            ×
+          </button>
+
+          <div class="modal__demo" id="modal-demo"></div>
+
+          <div class="modal__info">
+            <p class="modal__eyebrow" id="modal-category"></p>
+            <h3 class="modal__title" id="modal-title"></h3>
+            <p class="modal__summary" id="modal-summary"></p>
+            <h4 class="modal__subtitle">What it does</h4>
+            <ul class="modal__features" id="modal-features"></ul>
+            <ul class="project__tags" id="modal-tags"></ul>
+            <div class="project__actions" id="modal-links"></div>
+          </div>
+        </div>
+      </dialog>
     </section>
 
     <section class="section about" id="about" aria-labelledby="about-title">
