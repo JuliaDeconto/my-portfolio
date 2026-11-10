@@ -824,6 +824,34 @@ body:has(dialog[open]) {
   }
 }
 
+/* ---------- Responsive: projects ---------- */
+@media (max-width: 640px) {
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .terminal-bar {
+    flex-direction: column;
+  }
+}
+
+/* --- Responsive: project modal --- */
+@media (max-width: 800px) {
+  .modal__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .modal__demo {
+    min-height: 260px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .modal__info {
+    padding: 24px 20px;
+  }
+}
+
 /* --- Responsive: about --- */
 @media (max-width: 800px) {
   .about__inner {
