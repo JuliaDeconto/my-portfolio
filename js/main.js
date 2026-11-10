@@ -354,3 +354,13 @@ if (copyButton) {
     }, 2000);
   });
 }
+
+// --- Sticky nav ---
+// Adds a background to the fixed nav once the page is scrolled.
+const nav = document.querySelector(".nav");
+
+const updateNav = () =>
+  nav.classList.toggle("is-scrolled", window.scrollY > 24);
+
+window.addEventListener("scroll", updateNav, { passive: true });
+updateNav();
