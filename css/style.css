@@ -781,6 +781,7 @@ body:has(dialog[open]) {
   border-radius: 12px 0 0 0;
 }
 
+/* --- Terminal cursor --- */
 .terminal__cursor {
   display: inline-block;
   width: 0.6ch;
@@ -788,6 +789,18 @@ body:has(dialog[open]) {
   margin-left: 2px;
   vertical-align: text-bottom;
   background: currentColor;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .terminal__cursor {
+    animation: blink 1s steps(1) infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
 }
 
 /* --- Technology icons --- */
