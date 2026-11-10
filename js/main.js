@@ -124,6 +124,29 @@ grid.addEventListener(
 
 renderProjects(projects);
 
+// --- Projects: filters ---
+const filterButtons = document.querySelectorAll(".filters__btn");
+const filterFlag = document.getElementById("projects-flag");
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.filter;
+
+    filterButtons.forEach((other) => {
+      const isActive = other === button;
+      other.classList.toggle("is-active", isActive);
+      other.setAttribute("aria-pressed", String(isActive));
+    });
+
+    filterFlag.textContent = `--filter=${filter}`;
+    renderProjects(
+      filter === "all"
+        ? projects
+        : projects.filter((p) => p.category === filter),
+    );
+  });
+});
+
 // --- About photo fallback ---
 // Shows a placeholder when the portrait image is missing or fails to load.
 const aboutPhoto = document.getElementById("about-photo");
