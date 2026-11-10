@@ -177,6 +177,149 @@ if (canTilt) {
   });
 }
 
+// ---- Projects: details modal ---
+const modal = document.getElementById("project-modal");
+const demoEl = document.getElementById("modal-demo");
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
+
+let demoRun = 0;
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const runTerminalDemo = async (screen, steps) => {
+  const run = ++demoRun;
+  const delay = (ms) => (prefersReducedMotion ? Promise.resolve() : wait(ms));
+  screen.replaceChildren();
+
+  for (const step of steps) {
+    const cmd = document.createElement("p");
+    cmd.className = "demo-terminal__cmd";
+    screen.append(cmd);
+
+    for (const char of `$ ${step.cmd}`) {
+      if (run !== demoRun) return;
+      cmd.textContent += char;
+      await delay(22);
+    }
+
+    await delay(250);
+    if (run !== demoRun) return;
+
+    const out = document.createElement("pre");
+    out.className = "demo-terminal__out";
+    out.textContent = step.out;
+    screen.append(out);
+    await delay(500);
+  }
+};
+
+const renderDemo = (demo) => {
+  demoRun++;
+  demoEl.replaceChildren();
+
+  if (!demo) {
+    demoEl.innerHTML = '<p class="demo-empty">demo coming soon</p>';
+    return;
+  }
+
+  if (demo.type === "terminal") {
+    const screen = document.createElement("div");
+    screen.className = "demo-terminal";
+    const replay = document.createElement("button");
+    replay.className = "btn";
+    replay.type = "button";
+    replay.textContent = "↻ replay";
+    replay.addEventListener("click", () => runTerminalDemo(screen, demo.steps));
+    demoEl.append(screen, replay);
+    runTerminalDemo(screen, demo.steps);
+  } else if (demo.type === "iframe") {
+    const frame = document.createElement("iframe");
+    frame.title = "Live project preview";
+    frame.loading = "lazy";
+    if (demo.srcdoc) frame.srcdoc = demo.srcdoc;
+    else frame.src = demo.src;
+    demoEl.append(frame);
+  } else if (demo.type === "video") {
+    const video = document.createElement("video");
+    Object.assign(video, {
+      src: demo.src,
+      controls: true,
+      muted: true,
+      loop: true,
+      autoplay: true,
+      playsInline: true,
+    });
+    demoEl.append(video);
+  }
+};
+
+const openProject = (id) => {
+  const project = projects.find((item) => item.id === id);
+  if (!project) return;
+
+  document.getElementById("modal-category").textContent =
+    `${project.category} / ${project.status}`;
+  document.getElementById("modal-title").textContent = project.title;
+  document.getElementById("modal-summary").textContent = project.summary;
+
+  document
+    .getElementById("modal-features")
+    .replaceChildren(
+      ...project.features.map((text) =>
+        Object.assign(document.createElement("li"), { textContent: text }),
+      ),
+    );
+  document
+    .getElementById("modal-tags")
+    .replaceChildren(
+      ...project.tags.map((text) =>
+        Object.assign(document.createElement("li"), { textContent: text }),
+      ),
+    );
+
+  const links = [
+    Object.assign(document.createElement("a"), {
+      className: "btn btn--primary",
+      href: project.repo,
+      target: "_blank",
+      rel: "noopener",
+      textContent: "code ↗️",
+    }),
+  ];
+  if (project.live) {
+    links.push(
+      Object.assign(document.createElement("a"), {
+        className: "btn",
+        href: project.live,
+        target: "_blank",
+        rel: "noopener",
+        textContent: "open live ↗️",
+      }),
+    );
+  }
+  document.getElementById("modal-links").replaceChildren(...links);
+
+  renderDemo(project.demo);
+  modal.showModal();
+};
+
+grid.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-view]");
+  if (button) openProject(button.dataset.view);
+});
+
+// Close with the X button or by clicking the backdrop.
+modal.addEventListener("click", (event) => {
+  if (event.target === modal || event.target.closest("[data-close]"))
+    modal.close();
+});
+
+modal.addEventListener("close", () => {
+  demoRun++;
+  demoEl.replaceChildren();
+});
+
 // --- About photo fallback ---
 // Shows a placeholder when the portrait image is missing or fails to load.
 const aboutPhoto = document.getElementById("about-photo");
