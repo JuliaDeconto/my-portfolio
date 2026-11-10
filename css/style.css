@@ -1022,6 +1022,22 @@ body:has(dialog[open]) {
   }
 }
 
+/* --- Responsive: contact --- */
+@media (max-width: 640px) {
+  .contact__actions .btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .contact__links {
+    margin-top: 40px;
+  }
+
+  .contact__footer {
+    margin-top: 48px;
+  }
+}
+
 /* --- Responsive --- */
 @media (max-width: 640px) {
   .nav {
