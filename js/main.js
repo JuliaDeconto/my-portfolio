@@ -331,3 +331,26 @@ if (aboutImg) {
   if (aboutImg.complete && aboutImg.naturalWidth === 0) showPlaceholder();
   aboutImg.addEventListener("error", showPlaceholder);
 }
+
+// --- Contact: copy email ---
+const copyButton = document.getElementById("copy-email");
+
+if (copyButton) {
+  const defaultLabel = copyButton.textContent;
+
+  copyButton.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(copyButton.dataset.email);
+      copyButton.textContent = "copied ✓";
+      copyButton.classList.add("is-copied");
+    } catch {
+      // Clipboard unavailable: show the address instead.
+      copyButton.textContent = copyButton.dataset.email;
+    }
+
+    setTimeout(() => {
+      copyButton.textContent = defaultLabel;
+      copyButton.classList.remove("is-copied");
+    }, 2000);
+  });
+}

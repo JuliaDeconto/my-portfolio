@@ -949,7 +949,14 @@ body:has(dialog[open]) {
   border-top: 1px solid var(--line);
 }
 
-/* ---------- Responsive: projects ---------- */
+/* --- Contact: copied state --- */
+.btn.is-copied {
+  color: var(--bg);
+  background: #5ee6a8;
+  border-color: #5ee6a8;
+}
+
+/* --- Responsive: projects --- */
 @media (max-width: 640px) {
   .projects__grid {
     grid-template-columns: 1fr;
